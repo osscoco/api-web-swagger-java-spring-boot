@@ -1,0 +1,102 @@
+databaseChangeLog:
+- changeSet:
+    id: 1763499845432-1
+    author: utilisateur (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: installed_rank
+            type: INT
+        - column:
+            name: version
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: description
+            type: VARCHAR(200)
+        - column:
+            constraints:
+              nullable: false
+            name: type
+            type: VARCHAR(20)
+        - column:
+            constraints:
+              nullable: false
+            name: script
+            type: VARCHAR(1000)
+        - column:
+            name: checksum
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: installed_by
+            type: VARCHAR(100)
+        - column:
+            constraints:
+              nullable: false
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: installed_on
+            type: timestamp
+        - column:
+            constraints:
+              nullable: false
+            name: execution_time
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: success
+            type: BIT(1)
+        tableName: flyway_schema_history
+- changeSet:
+    id: 1763499845432-2
+    author: utilisateur (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: enabled
+            type: BIT(1)
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: id
+            type: CHAR(36)
+        - column:
+            constraints:
+              nullable: false
+            name: role
+            type: VARCHAR(20)
+        - column:
+            constraints:
+              nullable: false
+              unique: true
+            name: username
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: password
+            type: VARCHAR(255)
+        tableName: users
+- changeSet:
+    id: 1763499845432-3
+    author: utilisateur (generated)
+    changes:
+    - createIndex:
+        associatedWith: ''
+        columns:
+        - column:
+            name: success
+        indexName: flyway_schema_history_s_idx
+        tableName: flyway_schema_history
+
