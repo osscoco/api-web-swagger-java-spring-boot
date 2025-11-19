@@ -1,6 +1,6 @@
 databaseChangeLog:
 - changeSet:
-    id: 1763499845432-1
+    id: 1763576572865-1
     author: utilisateur (generated)
     changes:
     - createTable:
@@ -55,7 +55,7 @@ databaseChangeLog:
             type: BIT(1)
         tableName: flyway_schema_history
 - changeSet:
-    id: 1763499845432-2
+    id: 1763576572865-2
     author: utilisateur (generated)
     changes:
     - createTable:
@@ -63,24 +63,44 @@ databaseChangeLog:
         - column:
             constraints:
               nullable: false
-            name: enabled
-            type: BIT(1)
+            name: created_at
+            type: datetime
+        - column:
+            name: deleted_at
+            type: datetime
+        - column:
+            name: updated_at
+            type: datetime
         - column:
             constraints:
               nullable: false
               primaryKey: true
             name: id
-            type: CHAR(36)
+            type: BINARY(16)
         - column:
-            constraints:
-              nullable: false
-            name: role
+            name: phone
             type: VARCHAR(20)
         - column:
             constraints:
               nullable: false
               unique: true
-            name: username
+            name: email
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: first_name
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: last_name
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+              unique: true
+            name: pseudo
             type: VARCHAR(50)
         - column:
             constraints:
@@ -89,7 +109,7 @@ databaseChangeLog:
             type: VARCHAR(255)
         tableName: users
 - changeSet:
-    id: 1763499845432-3
+    id: 1763576572865-3
     author: utilisateur (generated)
     changes:
     - createIndex:
