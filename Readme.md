@@ -1,6 +1,4 @@
-# 🛡️ API Secure – Spring Boot / JWT / Docker / MySQL / Swagger
-API REST sécurisée avec **Spring Boot**, authentification **JWT**, base de données **MySQL via Docker**, migrations **Liquibase**, et documentation **Swagger UI**.  
-Ce projet suit une architecture modulaire orientée **Feature-Based + couche Common/Security** pour favoriser la **scalabilité** et la **maintenabilité**.
+# 🛡️ API Secure – Java Spring Boot / JWT / Docker / MySQL / Swagger
 
 ---
 
@@ -12,17 +10,15 @@ Ce projet suit une architecture modulaire orientée **Feature-Based + couche Com
 - [⚙️ Configuration Spring Boot](#️-configuration-spring-boot)
 - [🧬 Migrations avec Liquibase](#-migrations-avec-liquibase)
 - [🧪 Tester l’API (Swagger / Postman)](#-tester-lapi-swagger--postman)
-- [🔐 Authentification JWT – Flow](#-authentification-jwt--flow)
-- [🚀 Prochaines améliorations possibles](#-prochaines-améliorations-possibles)
 - [👨‍💻 Auteur](#-auteur)
 
 ---
 
 ## ⚙️ Technologies utilisées
 | Catégorie | Technologies |
-|-----------|--------------|
-| Langage | Java 17 |
-| Framework Backend | Spring Boot 3.5.x |
+|-----------|-----------|
+| Langage | Java |
+| Framework Backend | Spring Boot |
 | Authentification | Spring Security + JWT |
 | ORM | Hibernate / Spring Data JPA |
 | DB | MySQL (via Docker) |
@@ -37,16 +33,12 @@ Ce projet suit une architecture modulaire orientée **Feature-Based + couche Com
 ```bash
 src/main/java/com/eclubmaven/api_secure
 │
-├── ApiSecureApplication.java     # Point d’entrée Spring Boot
+├── ApiSecureApplication.java
 │
-├── config/                       # Config globale (Spring/Security/Swagger)
-├── common/                       # Utils, exceptions, constantes
-├── security/                     # JWT + Filters + UserDetailsService
-│
-├── models/                       # Entities JPA (UserEntity, BaseEntity…)
-│
-└── modules/                      # Organisation par FEATURE
-    └── auth/                    # AuthController, AuthService, DTO, Mapper…
+├── config/
+├── models/
+├── modules/
+└── security/
 ```
 
 ## 🚀 Installation du projet
@@ -54,9 +46,7 @@ src/main/java/com/eclubmaven/api_secure
 | Option | Valeur recommandée |
 |--------|--------------------|
 | Project | Maven |
-| Java | 17 |
 | Packaging | JAR |
-| Spring Boot | 3.5.x |
 | Dependencies | Web, Security, JPA, MySQL, Lombok, Liquibase |
 📥 **Télécharger le fichier ZIP**  
 📂 **Extraire et ouvrir avec IntelliJ IDEA Community Edition**
@@ -162,13 +152,6 @@ http://localhost:8080/swagger-ui/index.html
 
 ### 📌 Flow d’authentification JWT
 
-Étape	Route	Description
-1	POST /auth/register	Créer un utilisateur
-2	POST /auth/login	Retourne un JWT
-3	Swagger → Authorize	Mettre Bearer <token>
-4	GET /auth/me	Récupère l’utilisateur connecté
-5	POST /logout	Token toujours valide (JWT stateless)
-
 | Étape | Route               | Description        |
 |-------|---------------------|--------------------|
 | 1     | POST /auth/register | Créer un utilisateur |
@@ -179,32 +162,5 @@ http://localhost:8080/swagger-ui/index.html
 
 ---
 
-### 🔐 Authentification JWT (diagramme)
-
-```mermaid
-sequenceDiagram
-participant Client
-participant API
-participant DB
-
-    Client->>API: POST /auth/login
-    API->>DB: Vérification email + password
-    DB-->>API: OK
-    API-->>Client: Token JWT
-    Client->>API: Authorization: Bearer <token>
-    API->>API: Vérification JWT
-    API-->>Client: Données sécurisées
-```
-
-### 🚀 Prochaines améliorations possibles
-
-- **✔ TokenBlacklistService (invalidation de JWT)**
-- **✔ Module /users + /roles**
-- **✔ Tests unitaires (JUnit + Mockito)**
-- **✔ Docker Compose API + DB (prod/dev)**
-- **✔ Déploiement Render.com / Railway / VPS**
-- **✔ CI/CD GitHub Actions**
-
 ### 👨‍💻 Auteur
-
 Développé par osscoco

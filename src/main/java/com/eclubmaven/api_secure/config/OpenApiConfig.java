@@ -26,7 +26,6 @@ public class OpenApiConfig {
                                         .bearerFormat("JWT")
                         )
                 )
-                // 🔐 Application globale : toutes les routes demandent ce schéma
                 .addSecurityItem(new SecurityRequirement().addList("bearerAuth"));
     }
 }
